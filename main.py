@@ -126,7 +126,7 @@ def find_data(song):
 
 def loop(driver, profile, delimiter):
     """Main loop of the program.  Keeps going to next page scraping data"""
-    driver.get('https://www.last.fm/user/' + str(profile) + '/library?page=164')
+    driver.get('https://www.last.fm/user/' + str(profile) + '/library')
     exist_count = 0
     while True:
         # write to file after every page to ensure that if one page goes wrong, still saves progress

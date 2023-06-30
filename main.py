@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.service import Service
 from tqdm import tqdm
 import time
 import os
@@ -56,7 +57,8 @@ def create_driver(headless,ublock):
     options = webdriver.FirefoxOptions()
     if headless:
         options.add_argument("-headless")
-    driver = webdriver.Firefox(executable_path=path,options=options)
+    service = Service(executable_path=path)
+    driver = webdriver.Firefox(service=service,options=options)
     try:
         driver.install_addon(os.path.join(os.getcwd(), ublock),
                             temporary=True)
